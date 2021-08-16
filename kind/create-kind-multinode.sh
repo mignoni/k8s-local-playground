@@ -22,7 +22,7 @@ echo 'Creating a k8s cluster with multiple nodes'
 kind create cluster --config=./kind/kind-multinode-config.yaml
 
 # connect the registry to the cluster network
-if ! [ registry_exists > 1 ]; then
+if ! [ "${registry_exists}" -gt 1 ]; then
   docker network connect "kind" "${reg_name}"
 fi
 
